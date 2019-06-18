@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+class Main {
+	public static void main(String[] args) {
+		int [] a;
+		int n,k;
+		Scanner in =new Scanner(System.in 
+
+);
+		n=in.nextInt();//数列个数
+		if(n>=1 && n<=200){
+			a =new int[n];
+			int num=0;
+			for(int i=0;i<n;i++){//输入N个数
+				num=in.nextInt();
+				if(Math.abs(num)<=10000)//判断是否绝对值下于1000
+					a[i]=num;
+			}
+			int index=0;
+	    for (int i=0; i<n; i++) 
+	    {  
+	        index=i; 		
+	        for (int j=i+1; j<n; j++) 
+	           if  (a[j]<a[index])  
+	        	   index=j;//找出最小的
+	        if (index!=i) {
+	        	int num1=a[i];
+	        	a[i]=a[index];
+	        	a[index]=num1;
+	        }
+	    }
+	    for(int o=0;o<n;o++)
+			System.out.print(a[o]+" ");
+		}
+	}
+}
