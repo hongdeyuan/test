@@ -1,3 +1,0 @@
-merging success!
-git modify...
-git add..
