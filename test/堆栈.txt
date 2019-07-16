@@ -1,0 +1,85 @@
+package ali.interview;
+
+public class ListStack {
+	class Node{
+		private Object data;
+		private Node next;
+		
+		public Node() {
+			this.data = null;
+			this.next = null;
+		}
+		
+		public Node(Object data) {
+			this.data = data;
+			this.next = null;
+		}
+		
+		public Object getData() {
+			return data;
+		}
+		public void setData(Object data) {
+			this.data = data;
+		}
+		public Node getNext() {
+			return next;
+		}
+		public void setNext(Node next) {
+			this.next = next;
+		}			
+	}
+	
+	private Node top;	
+	
+	public Node getTop() {
+		return top;
+	}
+
+	public void setTop(Node top) {
+		this.top = top;
+	}
+
+	public ListStack() {
+		top = new Node();
+	}
+	
+	public boolean isNull() {
+		if(top.getNext() == null)
+			return true;
+		return false;
+	}
+	
+	public void push(Node node) {
+		if(this.isNull()) {
+			top.setNext(node);
+		}else {
+			node.setNext(top.getNext());
+			top.setNext(node);
+		}		
+	}
+	
+	public Object pop() {
+		if (this.isNull()) {
+			return null;
+		}else {
+			Node n = top.getNext();
+			top.setNext(n.getNext());			
+			return n.getData();
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		ListStack ls = new ListStack();
+		System.out.println(ls.isNull());
+		ls.push(ls.new Node(5));
+		ls.push(ls.new Node('g'));
+		ls.push(ls.new Node(7));
+		
+		System.out.println(ls.pop());
+		System.out.println(ls.pop());
+		System.out.println(ls.pop());
+		System.out.println(ls.pop());
+	}
+
+}
